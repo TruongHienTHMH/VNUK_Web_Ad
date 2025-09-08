@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen w-full bg-white m-0 p-0">
+    <!-- Lỗi ở bài này, sử dụng height và width nhiều chỗ bị thừa. -->
+    <!-- Sử dụng height và width không đúng chỗ sẽ ảnh hưởng đến margin và padding mặc đỉnh. -->
+    <!-- nên sử dụng justify-center và items cho những wrapper tổng thể: -->
+    <div class="container mx-auto px-6 py-3 flex flex-col"> <!-- mx: margin x theo chiều ngang và auto-->
+        <div class="nav px-8 py-4 flex flex-row gap-10 items-center justify-between">
+            <div class="logo flex flex-1/2 border-b-2">
+                <h1 class="py-4 text-xl font-bold">Web_Product</h1>
+            </div>
+            <div class="menu flex flex-1/2 justify-start gap-6">
+                <a href="">Home</a>
+                <a href="">Product</a>
+                <a href="">About us</a>
+                <a href="">Cart</a>
+                <a href="">Acount</a>
+            </div>
+        </div>
+        <!-- Lỗi: "grid grid-cols-2 h-screen" sử dụng grid để căn chiều cao nhưng lại quên dùng 
+            căn giữa chiều dọc 
+        -->
+        <div class="content py-4 mt-0.5  grid grid-cols-2 gap-10 flex-1 items-stretch ">
+            <div class="product grid grid-cols-2 gap-10 p-4"> 
+                <div class="item01 flex flex-col">
+                    <div class="title block object-strech">
+                        <img src="inter_miami_hưng.jpg" alt="" class="w-auto object-cover rounded">
+                        <h2 class="mt-2 text-lg font-semibold">Women product</h2>
+                    </div>
+                    <div class="price mt-2">
+                        <span class="font-bold">$200</span>
+                        <span class="line-through text-gray-500">100</span>
+                        <div class="flex w-auto justify-end ">
+                            <button type="button" class=" px-3 py-2 mt-2 bg-red-500 rounded ">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item01 flex flex-col">
+                    <div class="title block object-strech">
+                        <img src="inter_miami_hưng.jpg" alt="" class="w-auto object-cover rounded">
+                        <h2 class="mt-2 text-lg font-semibold">Women product</h2>
+                    </div>
+                    <div class="price mt-2">
+                        <span class="font-bold">$150</span>
+                        <span class="line-through text-gray-500"></span>
+                        <div class="flex w-auto justify-end ">
+                            <button type="button" class=" px-3 py-2 mt-2 bg-red-500 rounded ">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chẳng hạn ở đây -->
+            <div class="abtus flex items-center justify-center bg-[url('./inter_miami_hưng.jpg')] bg-cover bg-center ">
+                <div class="flex flex-col">
+                    <span class="">SPORT PRODUCT</span>
+                    <button type="button" class="w-auto px-2 py-2 m-1 bg-red-500 rounded">About US!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
