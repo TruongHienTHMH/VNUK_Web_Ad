@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form bảg điểm</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="script.js"></script>
+</head>
+
+<body class="m-0 p-0 place-items-center justify-items-center"></body>
+    
+        <form class="bg-gray-300 px-2 py-4">
+        <caption class="justify-items-center items-center"> <h1 class="text-2xl text-white-600">Bảng điểm sinh viên</h1> </caption>
+            <div class="grid grid-cols-2 grid-rows-6 gap-2">  
+                <label for="score1">Semester 1</label>
+                <input type="text" id="score_1" name="score1" placeholder="Nhập điểm học kì 1" class="bg-white">
+                <label for="score2">Semester 2</label>
+                <input type="text" id="score_2" name="score2" placeholder="Nhập điểm học kì 2" class="bg-white">
+                <label for="year">Year</label>
+                <select name="year" id="valYear">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+
+                <span>Điểm trung bình</span>        <input type="text" name="" id="medVal" placeholder="Kết quả ở đây" disabled>
+                <span>Kết quả</span>                 <p id="result"> </p>
+                
+                <button class="" onclick="cal()" type="button">OK</button></td>
+                <button class="" onclick="cancel()">Cancel</button></td>
+            </div>
+            
+    </form>
+    
+
+</body>
+
+</html>

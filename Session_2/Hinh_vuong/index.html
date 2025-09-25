@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Vuông - Loop</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+
+</head>
+<style>
+    .square_odd {
+        width: 50px;
+        height: 50px;
+        background: yellow;
+        display: inline-block;
+        margin: 1;
+    }
+
+    .square_even {
+        width: 50px;
+        height: 50px;
+        border: 0.5;
+        background: gray;
+        display: inline-block;
+        margin: 1;
+    }
+</style>
+<!-- Định nghĩa hình vuông -->
+
+    <script>
+        for(let row = 0; row < 5; row++){
+            if(row % 2 == 0){
+                for(let col = 0; col < 10; col++){
+                    document.writeln("<div class='square_odd'></div>");
+                }
+            } else {
+                for(let col = 0; col < 10; col++){
+                    document.writeln("<div class='square_even'></div>");
+                }
+            }
+            
+            document.write("<br>");
+        }
+    </script>
+<body>
+    
+</body>
+</html>
