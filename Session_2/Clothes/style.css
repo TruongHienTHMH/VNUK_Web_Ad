@@ -1,0 +1,73 @@
+/* Reset cơ bản */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  padding: 1rem;
+  color: #111;
+}
+
+/* Form input cơ bản */
+form input, form button {
+  padding: .5rem .6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Table chính */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* quan trọng: chia cột theo width định sẵn */
+  border: 1px solid #e2e8f0;
+  background: white;
+}
+
+/* Chia tỷ lệ cột bằng colgroup (còn có thể dùng nth-child) */
+colgroup col:nth-child(1) { width: 40%; } /* Name */
+colgroup col:nth-child(2) { width: 35%; } /* Description */
+colgroup col:nth-child(3) { width: 12.5%; } /* Price */
+colgroup col:nth-child(4) { width: 12.5%; } /* Sale */
+
+/* Header & cells */
+th, td {
+  border: 1px solid #e6e6e6;
+  padding: .6rem .75rem;
+  text-align: left;
+  vertical-align: middle;
+  font-size: .95rem;
+}
+
+/* Header style */
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+/* Trường hợp chữ quá dài: 1 dòng + ellipsis */
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Nhưng cho column Description cho phép xuống dòng (nếu bạn muốn wrap) */
+td:nth-child(2) {
+  white-space: normal;      /* cho phép wrap */
+  word-break: break-word;
+  max-height: 4.5rem;      /* giới hạn chiều cao nếu muốn */
+  overflow: hidden;
+}
+
+/* Một chút responsive: trên màn hình nhỏ chuyển đầu bảng thành cuộn ngang */
+@media (max-width: 640px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+}

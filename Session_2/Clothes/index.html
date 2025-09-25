@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Clothes</title>
+</head>
+
+<body onload="loadTable()">
+    <div class="mx-4 my-4 px-3 py-8 justify-self-center">
+        <header class="text-2xl font-bold justify-items-center">
+            <h1 class="">Quản lý shop</h1>
+        </header>
+        <form action="" class="grid grid-cols-2 gird-rows-4 justify-items-center items-center w-fit h-auto">
+            <label for="fname">Name</label>
+            <input type="text" name="fname" id="namePro" placeholder="Nhập tên sản phẩm" required>
+            <label for="fdes">Description</label>
+            <input type="text" name="fdes" id="desPro" placeholder="Nhập giới thiệu sản phẩm" required>
+            <label for="fpri">Price</label>
+            <input type="text" name="fpri" id="priPro" placeholder="Nhập giá sản phẩm" required>
+            <label for="fsale">Sale</label>
+            <input type="text" name="fsale" id="salePro" placeholder="Nhập giảm giá cho sản phẩm (nếu có)" required>
+            <button onclick="addProduct()" type="button">Add Product</button>
+            <button>Cancel</button>
+        </form>
+    </div>
+    <div class="table-wrapper">
+        <table>
+            <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Sale</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
