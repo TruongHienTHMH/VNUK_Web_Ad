@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+
+<body>
+    <h1>Form tạo mới</h1>
+    <form action="" method="POST" id="formProduct">
+        <label for="name">Nhập tên</label>
+        <input type="text" name="name" id="name">
+        <label for="img">Nhập link ảnh</label>
+        <input type="text" name="img" id="img">
+        <label for="price">Nhập giá</label>
+        <input type="text" name="price" id="price">
+        <button type="submit">OK</button>
+    </form>
+
+</body>
+<script>
+    // Hàm kết nối và thêm data
+    function addDataToAPI(data, callback) {
+        fetch('https://68d39c89214be68f8c667c15.mockapi.io/Product',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }
+        )
+            .then(respone => {
+                if (!respone.ok) {
+                    throw new Error('Có lỗi xảy ra khi add data mới');
+                }
+                return respone.json();
+            })
+            .then(result => {
+                callback(null, result);
+            })
+            .catch(error => {
+                callback(error, null);
+            })
+    }
+
+    const formInput = document.getElementById('formProduct');
+
+    formInput.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const newData = {
+            name: document.getElementById('name').value,
+            price: document.getElementById('price').value,
+            image: document.getElementById('img').value
+        }
+
+        addDataToAPI(newData, handleAddDataRespone);
+
+    })
+
+
+    // Hàm xử lý kết quả thêm
+    function handleAddDataRespone(error, result) {
+        if (error) {
+            console.error('Lỗi: ', error.message)
+        } else {
+            console.log('Dữ liệu đã được thêm vào: ', result)
+            window.location.href="index.html"
+        }
+    }
+</script>
+
+</html>

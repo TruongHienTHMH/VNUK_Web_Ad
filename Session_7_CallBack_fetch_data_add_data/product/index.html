@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        background-color: white;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-self: center;
+        align-self: center;
+        border-collapse: collapse;
+        border: 1 solid black;
+    }
+
+    table {
+        border-style: solid;
+    }
+
+    img{
+        max-width: 80px;
+        max-height: 80px;
+
+    }
+
+    h1 {
+        color: blue;
+        font-size: bold;
+        justify-self: center;
+    }
+
+    form {
+        max-width: 900px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        justify-self: center;
+    }
+    
+    button {
+        margin: 10px;
+        padding: 2px 20px; 
+    }
+</style>
+<body>
+    <h1>Product</h1>
+    <table class="box">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody id="productTable">
+            
+        </tbody>
+        <a href="add.html"><button>Thêm sản phẩm</button></a>
+    </table>
+</body>
+<script src="script.js">
+
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa</title>
+</head>
+
+<style>
+    h1{
+        justify-self: center;
+    }
+
+    form {
+        width: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        justify-self: center;
+        border: 2px solid;
+    }
+</style>
+
+<body>
+    <h1>Sửa sản phẩm</h1>
+    <form action="" method="POST" id="formEdited">
+        <label for="name">Tên của sản phẩm</label>
+        <input type="text" name="name" id="name">
+        <label for="img">Img</label>
+        <input type="text" name="image" id="image">
+        <label for="price">Giá của sản phẩm</label>
+        <input type="text" name="price" id="price">
+        <button type="submit">OK</button>
+    </form>
+</body>
+
+<script>
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get("id")
+    console.log(id)
+
+    // Load dữ liệu ra
+    fetch(`https://68d39c89214be68f8c667c15.mockapi.io/Product/${id}`)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("name").value = data.name;
+        document.getElementById("image").value = data.image;
+        document.getElementById("price").value = data.price;
+        // console.log(data)
+    })
+    .catch(error => {
+        console.log(`Error here: ${error}`)
+    })
+
+    document.getElementById('formEdited').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const updateProducts = {
+            name: document.getElementById("name").value,
+            image: document.getElementById("image").value,
+            price: document.getElementById("price").value
+        }
+        // Update sản phẩm
+        fetch(`https://68d39c89214be68f8c667c15.mockapi.io/Product/${id}`, {
+            method: "PUT",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify(updateProducts)
+        })
+        .then(res => res.json())
+        .then((data) => {
+            alert("Update thành công");
+            window.location.href = "index.html"
+        })
+
+    })
+    
+
+</script>
+
+</html>
