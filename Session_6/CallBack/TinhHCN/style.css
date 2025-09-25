@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: block; 
+}
+
+form {
+    display: grid;
+    column-gap: 2fr;
+}
+
+form caption {
+    column-span: 2;
+    justify-items: center;
+    align-items: center;
+}

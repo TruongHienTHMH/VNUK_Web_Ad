@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tính hình chữ nhật</title>
+</head>
+<body>
+    <form action="">
+        <caption>Form tính hình chữ nhật</caption>
+        <label for="fWidth">Nhập chiều rộng</label>
+        <input type="number" name="fWidth" id="inputWidth" required placeholder="Chiều rộng">
+        <label for="fHeight">Nhập chiều cao</label>
+        <input type="number" name="fHeight" id="inputHeight" required placeholder="Chiều cao">
+        <label for="fResult">Kết quả</label>
+        <input type="number" name="fResult" id="area" disabled>
+        <input type="number" name="fResult" id="p" disabled>
+        <button onclick="handleRectangle(e)" type="submit">Tính</button>
+        <button>Huỷ</button>
+    </form>
+</body>
+<script src="script.js"></script>
+</html>
