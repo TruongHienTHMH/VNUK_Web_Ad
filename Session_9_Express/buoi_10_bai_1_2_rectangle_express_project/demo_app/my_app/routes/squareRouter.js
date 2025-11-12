@@ -5,4 +5,8 @@ const squareController = require('../controllers/squareController');
 router.get('/squareForm', squareController.showForm);
 router.post('/squareCal', squareController.calculateSquare);
 
+router.get('/about', (req, res) => {
+    res.render('about', {name: "Trương Hoàng Mình Hiển"})
+})
+
 module.exports = router

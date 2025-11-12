@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="/about"><h3>About</h3></a>
     <h1>Calculate</h1>
     <form action="/cal" method="post">
         <label for="width">Width:</label>
@@ -17,10 +18,9 @@
         <button type="submit">Calculate</button>
     </form>
 
-    <% if ( resultP != null || resultArea != null) { %>
-        <h2>Perimeter: <%= resultP %> </h2>
-        <h2>Area: <%= resultArea %> </h2>
-
+    <% if ( perimeter != null || area != null) { %>
+        <h2>Perimeter: <%= perimeter %> </h2>
+        <h2>Area: <%= area %> </h2>
     <% } %>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tính hình vuông</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Form tính hình vuông</h1>
+    <form action="/calculate" method="post">
+      <label for="sideLength">Chiều dài của hình vuông</label>
+      <input type="number" name="sideLength">
+      <br>
+      <button type="submit">Tính</button>
+    </form>
+    <% if(perimeter != null && area != null) { %>
+      <h2>Chu vi là: <%= perimeter %> </h2>
+      <h2>Diện tích là: <%= area %> </h2>
+    <% } %>
+  </body>
+
+</html>

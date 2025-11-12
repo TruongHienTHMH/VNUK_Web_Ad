@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WelcomPage</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/calculate" method="post">
+        <label for="sideLength">Nhập vào chiều dài 1 cạnh: </label>
+        <input type="number" required name="sideLength">
+        <br>
+        <button>Tính</button>
+    </form>
+
+    <% if(perimeter != null && area != null) {%>
+        <h2>Chu vi là: <%= perimeter %> </h2>
+        <h2>Diện tích là: <%= area %> </h2>
+    <% } %>
+  </body>
+</html>

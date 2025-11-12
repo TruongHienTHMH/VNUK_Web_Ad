@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa project</title>
+</head>
+<body onload="showInformation()">
+    <h1>Chỉnh sửa thông tin sản phẩm</h1>
+    <form action="" id="formToEdit" >
+        <label for="name">Name</label>
+        <input type="text" name="name" id="iName">
+        <label for="avatarURL">Avatar</label>
+        <input type="text" name="avatarURL" id="iAvatar">
+        <label for="price">Price</label>
+        <input type="text" name="price" id="iPrice">
+    </form>
+    <button id="editBtnID" onclick="editAction()">Cập nhập</button>
+    
+</body>
+<script>
+    const apiUrl = "https://68d39c89214be68f8c667c15.mockapi.io/Product"
+
+    const params = new URLSearchParams(window.location.search)
+    const idUser = params.get('id')
+
+    const formData = document.getElementById('formToEdit')
+
+    const editBtn = document.getElementById('editBtnID')
+
+    const showInformation = () => {
+        fetch(apiUrl+`/${idUser}`)
+            .then(res => {
+                if(!res.ok){
+                    throw new Error("Không thể lấy được user")
+                }
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+                document.getElementById('iName').value = data['name']
+                document.getElementById('iAvatar').value = data['image']
+                document.getElementById('iPrice').value = data['price']
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
+    const updateUser = (userInfor) => {
+        return new Promise ((resolve, reject) => {
+            fetch(apiUrl + "/" + idUser, {
+                method: "PUT",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify(userInfor)
+            })
+                .then(res => {
+                    if(!res.ok){
+                        reject("Đã có lỗi xảy ra!!!")
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    resolve(data)
+                })
+                .catch(err => {
+                    reject(data)
+                })
+        })
+    }
+
+    const editAction = () => {
+        let nameVal = document.getElementById('iName').value
+        let avatarVal = document.getElementById('iAvatar').value
+        let priceVal = document.getElementById('iPrice').value
+
+        let userInfor = {
+            name: nameVal,
+            price: priceVal,
+            image: avatarVal
+        }
+
+        updateUser(userInfor)
+            .then(data => {
+                alert("Đã cập nhập thành công!!")
+                window.location.href= "index.html"
+            })
+            .catch(err => {
+                alert("Không thể cập nhâpj")
+            })
+    }
+
+
+</script>
+</html>

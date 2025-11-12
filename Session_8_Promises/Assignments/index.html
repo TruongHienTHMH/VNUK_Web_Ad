@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form User</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        justify-content: center;
+
+    }
+
+    .container {
+        width: 1200px;
+        justify-self: center;
+        margin: 40px;
+    }
+
+    h1 {
+        justify-self: center;
+        margin: 0 30px;
+
+    }
+
+    table {
+        padding: 12px;
+        justify-self: center;
+        padding: 20px;
+        background-color: white;
+        border-style: solid;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        border: 2 solid;
+    }
+
+    img {
+        min-width: 25px;
+        max-width: 75px;
+        min-height: 50px;
+        max-height: 75px;
+    }
+
+
+
+    header {
+        width: screen;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(79, 213, 79);
+        padding: 20px 15px;
+    }
+
+    .search-box,
+    .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    button {
+        padding: 10px 5px;
+    }
+
+    input {
+        height: fit-content;
+    }
+</style>
+
+<body onload="getUsers()">
+    <div class="container">
+        <header>
+            <div class="search-box">
+                <span>Tìm kiếm sản phẩm: </span>
+                <input type="text">
+            </div>
+
+            <ul class="menu">
+                <a href="add.html"><button>Thêm sản phẩm</button></a>
+            </ul>
+        </header>
+        <h1>Danh sách User</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th colspan="2">
+                        Button
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    const apiUrl = "https://68d39c89214be68f8c667c15.mockapi.io/Product"
+
+    const getUsers = () => {
+        return new Promise((resolve, reject) => {
+            fetch('https://68d39c89214be68f8c667c15.mockapi.io/Product')
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Không thể lấy dữ liệu từ API')
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    resolve(data)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    }
+
+    getUsers()
+        .then(data => {
+            for (let i = 1; i <= data.length; i++) {
+                document.getElementById('tbody').innerHTML += `
+                    <tr>
+                        <td>${data[i].id}</td>
+                        <td><img src ="${data[i].image}" alt="image thôi"></td>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].price}</td>
+                        <td><a href="edit.html?id=${data[i].id}"><button>Edit</button></a></td>
+                        <td><a><button  value="" id="dltBtn" onclick="handleDeleting(${data[i].id})">Delete</button></a></td>
+                    </tr>
+                `
+            }
+
+            // console.log(`Danh sách người dùng: ${data[1].name}`)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+    const deleteUser = (id) => {
+        return new Promise((resolve, reject) => {
+            fetch(apiUrl + `/${id}`, {
+                method: "DELETE"
+            })
+            .then(res => {
+                if(!res.ok){
+                    throw new Error("Không thể xoá người dùng này")
+                }
+                resolve('Người dùng đã được xoá')
+            })
+            .catch(err => {
+                console.log('Bạn đã có lỗi: ');
+                reject(err)
+            })
+        } )
+    }
+
+    const handleDeleting = (userId) => {
+
+        deleteUser(userId)
+            .then(message => {
+                console.log(message + ` ${userId} `)
+            })
+            .catch(err => {
+                console.error("Đã có lỗi: " + err)
+            })
+
+    }
+</script>
+
+</html>
+<!-- 
+Theo dạng CRUD 
+ 1. Show Dữ liêu
+ 2. Quản lý (ID)
+ 3. Tìm kiếm (keyword)
+ -->

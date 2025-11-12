@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table hiển thị</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    body{
+        width: auto;
+    }
+
+    .container {
+        margin: 0 40px;
+        padding: 20px 40px;
+        width: 900px;
+        justify-self: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table_box {
+        margin: 0;
+        padding: 40px 0;
+        width: 300px;
+        justify-self: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn {
+        padding: 10px 22px;
+        border-radius: 5px;
+        font-weight: 500;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<body>  
+    <div class="container">
+        <table border="1" class="table_box">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.id %></td>
+                        <td><%= product.name %></td>
+                        <td><%= product.price %></td>
+                        <td><%= product.description %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/api/products/addProduct"><button class="btn btn-primary">Add</button></a>
+    </div>
+    
+</body>
+</html>
